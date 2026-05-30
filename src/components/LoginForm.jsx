@@ -3,8 +3,8 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
-function LoginForm({setIsLoggedIn}) {
-     const navigate=useNavigate()
+function LoginForm({ setIsLoggedIn }) {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         email: "", password: ""
     })
@@ -17,51 +17,49 @@ function LoginForm({setIsLoggedIn}) {
             }
         ))
     }
-    function submitHandler(event){
+    function submitHandler(event) {
         event.preventDefault()
         setIsLoggedIn(true)
         toast.success("Logged In")
         navigate("/dashboard")
     }
     return (
-        <form onSubmit={submitHandler}>
-            <label>
-                <p>
-                    Email address <sup>*</sup>
+        <form onSubmit={submitHandler} className="flex flex-col w-full mt-6">
+            <label className="w-full">
+                <p className="text-[1rem] text-gray-300 mb-1">
+                    Email address <sup className="text-red-400 text-1xl">*</sup>
                 </p>
                 <input
-                    required
-                    type="email"
-                    value={formData.email}
+                    className="w-full bg-[#161D29] text-[#F1F2FF] rounded-[0.5rem] p-[12px] border-b border-[#2C333F] outline-none placeholder:text-[#999DAA] mt-1" value={formData.email}
                     onChange={changeHandler}
-                    placeholder="Enter email id" 
-                    name="email"/>
+                    placeholder="Enter email id"
+                    name="email" />
             </label>
             <br />
 
-            <label>
-                <p>
-                    Enter Password <sup>*</sup>
+            <label className="w-full relative">
+                <p className="text-[1rem] text-gray-300 mb-1">
+                    Enter Password <sup className="text-red-400 text-1xl">*</sup>
                 </p>
                 <input
-                    required
-                    type={showPassword ? ("text") : ("password")}
-                    value={formData.password}
+                    className="w-full bg-[#161D29] text-[#F1F2FF] rounded-[0.5rem] p-[12px] border-b border-[#2C333F] outline-none placeholder:text-[#999DAA] mt-1" value={formData.password}
                     onChange={changeHandler}
-                    placeholder="Enter Password" 
-                    name="password"/>
+                    placeholder="Enter Password"
+                    name="password" />
 
 
-                <span onClick={() => setShowPassword((prev) => !prev)}>
-                    {showPassword ? (<AiOutlineEyeInvisible />) : (<AiOutlineEye />)}
+                <span className="text-gray-300 absolute cursor-pointer right-3 top-[48px]"
+                    onClick={() => setShowPassword((prev) => !prev)}>
+                    {showPassword ? (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF' />) :
+                        (<AiOutlineEye fontSize={24} fill='#AFB2BF' />)}
                 </span>
                 <Link to="#">
-                    <p>
+                    <p className="text-blue-300 text-sm ml-86">
                         Forgot Password</p></Link>
             </label>
-       <button>
-        Sign In
-       </button>
+            <button className="bg-yellow-500 p-2 text-gray-900 gap-2 cursor-pointer rounded-sm hover:bg-yellow-600 transition-all duration-200 mt-4 mb-5">
+                Sign In
+            </button>
 
         </form>
     )

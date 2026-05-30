@@ -8,13 +8,13 @@ function Navbar(props) {
     let setIsLoggedIn=props.setIsLoggedIn
     return (  
         //linking to the home page
-        <div className="flex justify-evenly">
+        <div className="flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto">
 
             <Link to="/">
                 <img src={logo} akt="Logo" width={160} height={32} loading="lazy" />
             </Link>
             <nav>
-                <ul className="flex flex-row gap-3">
+                <ul className="flex flex-row gap-3 text-gray-300">
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -29,24 +29,24 @@ function Navbar(props) {
 
                 </ul>
             </nav>
-            <div className="flex mx-5 gap-4">
+            <div className="flex items-center gap-4">
                 { !isLoggedIn &&
                     <Link to="/login">
-                        <button>
+                        <button className="bg-gray-700 text-gray-200 rounded-sm px-3 py-1 cursor-pointer hover:bg-gray-800 transition:all duration:200">
                             Login
                         </button>
                     </Link>
                 }
                  { !isLoggedIn &&
                     <Link to="/signup">
-                        <button >
+                        <button className="bg-gray-700 text-gray-200 rounded-sm px-3 py-1 cursor-pointer hover:bg-gray-800 transition:all duration:200">
                             Sign up
                         </button>
                     </Link>
                 }
                  {  isLoggedIn &&
                     <Link to="/">
-                        <button onClick={()=>{
+                        <button className="bg-gray-700 text-gray-200 rounded-sm px-3 py-1 cursor-pointer hover:bg-gray-800 transition:all duration:200" onClick={()=>{
                             setIsLoggedIn(false)
                             toast.success("Logged Out")
                         }}>
@@ -56,7 +56,7 @@ function Navbar(props) {
                 }
                  {  isLoggedIn &&
                     <Link to="/dashboard">
-                        <button>
+                        <button className="bg-gray-700 text-gray-200 rounded-sm px-3 py-1 cursor-pointer hover:bg-gray-800 transition:all duration:200">
                             Dashboard
                         </button>
                     </Link>
